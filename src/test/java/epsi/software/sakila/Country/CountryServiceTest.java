@@ -44,4 +44,15 @@ class CountryServiceTest {
         Country country1 = service.updateCountry(country).block();
         System.out.println(country1);
     }
+    @Test
+    void create() {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        Country country = new Country("Test");
+        Country country1 = service.createCountry(country).block();
+        System.out.println(country1);
+    }
+    @Test
+    void delete(){
+        System.out.println(service.deleteCountry(152L));
+    }
 }

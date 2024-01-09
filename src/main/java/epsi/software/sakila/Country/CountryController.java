@@ -34,5 +34,15 @@ public class CountryController {
         return countryService.updateCountry(country)
                 .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.UNAUTHORIZED)));
     }
+    @PostMapping("create")
+    public Mono<Country> createCountry(@RequestBody Country country){
+        return countryService.createCountry(country)
+                .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.UNAUTHORIZED)));
+    }
+
+    @DeleteMapping("delete")
+    public Boolean deleteCountry(@RequestParam Long id){
+        return countryService.deleteCountry(id);
+    }
 
 }

@@ -33,8 +33,28 @@ public class CountryService implements ICountryService {
         return Mono.justOrEmpty(countryRepository.save(country))
                 .map(country1 -> new Country(
                         country1.getId(),
+                        country1.getCountry()
+                ));
+    }
+
+    @Override
+    public Mono<Country> createCountry(Country country) {
+        return Mono.justOrEmpty(countryRepository.save(country))
+                .map(country1 -> new Country(
+                        country1.getId(),
                         country1.getCountry(),
                         country1.getLastUpdate()
                 ));
+    }
+
+    @Override
+    public Boolean deleteCountry(Long id) {
+
+        if (countryRepository.existsById(id)) {
+            countryRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

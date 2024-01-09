@@ -26,6 +26,16 @@ public class Country {
     @Column(name = "last_Update", updatable = false)
     private LocalDateTime lastUpdate;
 
+    public Country(String country) {
+        this.id = null;
+        this.country = country;
+        this.lastUpdate = LocalDateTime.now();
+    }
 
+    public Country(Long id, String country) {
+        this.id = id;
+        this.country = country;
+        this.lastUpdate = LocalDateTime.now();
+    }
 
 }
