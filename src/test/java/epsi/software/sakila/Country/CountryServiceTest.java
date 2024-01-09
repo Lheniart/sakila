@@ -46,7 +46,6 @@ class CountryServiceTest {
     }
     @Test
     void create() {
-        LocalDateTime currentDateTime = LocalDateTime.now();
         Country country = new Country("Test");
         Country country1 = service.createCountry(country).block();
         System.out.println(country1);
